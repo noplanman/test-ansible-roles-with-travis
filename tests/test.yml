@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
-  remote_user: root
-  roles:
-    - test-ansible-roles-with-travis
+  connection: local
+  become: yes
+  roles: [../../]
+  vars:
+    test_var: "yay, it's working!"

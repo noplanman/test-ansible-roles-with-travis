@@ -1,2 +1,5 @@
 ---
 # tasks file for test-ansible-roles-with-travis
+
+- name: Test variable output
+  debug: var=test_var
