@@ -4,4 +4,4 @@
   become: yes
   roles: [../../]
   vars:
-    test_var: "yay, it's working!"
+    here_is_proof: "This is the proof right here!"

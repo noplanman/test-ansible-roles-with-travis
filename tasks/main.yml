@@ -1,5 +1,9 @@
 ---
 # tasks file for test-ansible-roles-with-travis
 
-- name: Test variable output
-  debug: var=test_var
+- name: Add vital config
+  template:
+    src: "etc/vital-config.j2"
+    dest: /etc/vital-config
+    owner: root
+    mode: 0644
