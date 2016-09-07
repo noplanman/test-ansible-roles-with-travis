@@ -1,30 +1,29 @@
-matrix:
-  include:
-    - os: linux
-      dist: wheezy
-      sudo: required
-    - os: linux
-      dist: jessie
-      sudo: required
-    - os: linux
-      dist: precise
-      sudo: required
-    - os: linux
-      dist: trusty
-      sudo: required
-    - os: linux
-      dist: xenial
-      sudo: required
+sudo: required
+dist: trusty
 
 language: python
 python: "2.7"
+
+env:
+  - ANSIBLE_VERSION=latest
+  - ANSIBLE_VERSION=2.1.0.0
+  - ANSIBLE_VERSION=2.0.2.0
+  - ANSIBLE_VERSION=2.0.0.0
+  - ANSIBLE_VERSION=1.9.6
+  - ANSIBLE_VERSION=1.9.0.1
+  - ANSIBLE_VERSION=1.8.4
+  - ANSIBLE_VERSION=1.8
+  - ANSIBLE_VERSION=1.7.2
+  - ANSIBLE_VERSION=1.7
+  - ANSIBLE_VERSION=1.6.10
+  - ANSIBLE_VERSION=1.6
 
 before_install:
   - sudo apt-get update -qq
 
 install:
   # Install ansible.
-  - pip install --no-binary ansible ansible
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install --no-binary ansible ansible; else pip install --no-binary ansible ansible==$ANSIBLE_VERSION; fi
 
   # Check ansible version.
   - ansible --version
